@@ -1,22 +1,75 @@
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+import java.util.*;
+public class TicTacToe 
+{	public static void main(String[] args)
+	{	Scanner input = new Scanner(System.in);
+		String[][] TicTacToe =  new String[3][3];
+		
+		int row = 0;
+		int column = 0;
+		String token = "";
+	
+	//Give initial value to array
+		for (int i = 0 ; i < TicTacToe.length ; i++)
+		{	for (int j = 0 ; j < TicTacToe[i].length ; j++)
+			{	TicTacToe[i][j] = " ";
+			
+			}
+		}
+	
+	//Enter the characters into the board
+		for (int i = 0 ; i < TicTacToe.length ; i++)
+		{	for (int j = 0 ; j < TicTacToe[i].length ; j++)
+			{	System.out.println(TicTacToe[0][0] + " | " + TicTacToe[0][1] + " | " + TicTacToe[0][2] + "\n"
+								+ "---------" + "\n"
+								+ TicTacToe[1][0] + " | " + TicTacToe[1][1] + " | " + TicTacToe[1][2] + "\n"
+								+ "---------" + "\n" 
+								+ TicTacToe[2][0] + " | " + TicTacToe[2][1] + " | " + TicTacToe[2][2]);
+				
+				System.out.println("Please Enter Token(Enter 'X' or 'O' ): ");
+				token = input.next();
+				System.out.println("Which row(Enter '0' , '1' , or '2'): ");
+				row = input.nextInt();
+				System.out.println("Which column(Enter '0' , '1' , or '2'): ");
+				column = input.nextInt();
+				
+				TicTacToe[row][column] = token;
+			}	
+		}
+	//Check for each row
+		boolean win = false;
+		for (int i = 0 ; i < TicTacToe.length ; i++)
+		{	if (TicTacToe[i][0].equals(TicTacToe[i][1]) && TicTacToe[i][1].equals(TicTacToe[i][2]))
+			{	win = true;
+				if (TicTacToe[i][0].equals("x") || TicTacToe[i][0].equals("X"))
+					System.out.print("Player one wins! (X)");
+				System.out.print("Player two wins! (Y)");
+			}
+		}
+		
+	//Check each column
+		for (int i = 0 ; i < TicTacToe.length ; i++)
+		{	if (TicTacToe[0][i].equals(TicTacToe[1][i]) && TicTacToe[1][i].equals(TicTacToe[2][i]))
+			{	win = true;
+				if (TicTacToe[0][i].equals("x") || TicTacToe[0][i].equals("X"))
+					System.out.print("Player one wins! (X)");
+				System.out.print("Player two wins! (Y)");
+			}
+		}
+		
+	//Check diagonals
+			if (TicTacToe[0][0].equals(TicTacToe[1][1]) && TicTacToe[1][1].equals(TicTacToe[2][2]))
+			{	win = true;
+				if (TicTacToe[0][0].equals("x") || TicTacToe[0][0].equals("X"))
+					System.out.print("Player one wins! (X)");
+				System.out.print("Player two wins! (Y)");
+			}
+			
+			if (TicTacToe[2][0].equals(TicTacToe[1][1]) && TicTacToe[1][1].equals(TicTacToe[2][0]))
+			{	win = true;
+				if (TicTacToe[2][0].equals("x") || TicTacToe[2][0].equals("X"))
+					System.out.print("Player one wins! (X)");
+				System.out.print("Player two wins! (Y)");
+			}
+	
+	}
+}
